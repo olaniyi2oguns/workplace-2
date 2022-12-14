@@ -109,3 +109,4 @@ server {
 `So, I added the command "sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/lempstackproject/index.html"`
 
 
+![php conrfiguration confirmation](./Images2/php-configuration-confirmation.jpg)
