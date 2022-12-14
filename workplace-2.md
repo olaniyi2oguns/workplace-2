@@ -110,3 +110,22 @@ server {
 
 
 ![php conrfiguration confirmation](./Images2/php-configuration-confirmation.jpg)
+
+## TESTING PHP WITH NGINX
+
+To validate if Nginx can correctly hand .php to the php processor that I configured. To do this, I opened a new file named info.php by running the command below:
+
+`sudo nano /var/www/lempstackproject/info.php` and a blank space output was generated in which run command 
+
+```
+<?
+phpinfo();
+
+```
+The image in the output below was generated and this validated the correctness of my configuration.
+
+![validating configuration](./Images2/testing-php-with-nginx.jpg)
+
+Because the output generated above contains sensitive information about the PHP environment and my Ubuntu server, I used the command `sudo rm /var/www/lempstackproject/info.php`
+
+
