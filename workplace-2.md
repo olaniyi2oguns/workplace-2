@@ -157,10 +157,10 @@ After testing olaniyi_user access to the database, I created a test tabled calle
 
 
 `CREATE TABLE olaniyi_database.todo_list (`
-`mysql>     item_id INT AUTO_INCREMENT,`
-`mysql>     content VARCHAR(255),`
-`mysql>     PRIMARY KEY(item_id)`
-`mysql> );`
+`item_id INT AUTO_INCREMENT,`
+`content VARCHAR(255),`
+`PRIMARY KEY(item_id)`
+`);`
 
 I then added "My first important item in to the test table" by running command `INSERT INTO olaniyi_database.todo_list (content) VALUES ("My first important item");`
 
@@ -168,6 +168,8 @@ I added other items by following the same command but with different values.
 
 To confirm if the items I created has been added as expected, I run command `SELECT * FROM olaniyi_database.todo_list;` and the output below was generated.
 
+
+![todo list](./Images2/items-added-to-todolist.jpg)
 
 After this has been confirmed, I exit the mysql console. So, I  create a PHP script that needs to connect Mysql and query for my content. I therefore, created a new PHP file in my custom web root directory with vi editor by running the command `sudo nano /var/www/lempstackproject/todo_list.php`
 
