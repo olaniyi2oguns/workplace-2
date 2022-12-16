@@ -1,4 +1,4 @@
-## INSTALLING THE NGINX WEV SERVER
+## INSTALLING THE NGINX WEB SERVER
 
 ## *Displaying web pages to site visitors*
 
@@ -128,4 +128,46 @@ The image in the output below was generated and this validated the correctness o
 
 Because the output generated above contains sensitive information about the PHP environment and my Ubuntu server, I used the command `sudo rm /var/www/lempstackproject/info.php`
 
+
+## RETRIEVING DATA FROM MYSQL DATABASE WITH PHP
+
+A test database with simple "To do list" was created and access into it was configured in order to enable Nginx website to query data from the database and also display it.
+
+To do this, I logged in to Mysql console using the root account by running command `sudo mysql`
+
+To create a new database, I run command `CREATE DATABASE 'example_database';` and the output below was generated.
+
+![create database](./Images2/create-database.jpg)
+
+I created a new user named olaniyi_user and mysql_native_password was used as default authentication method. So, I defined olaniyi_user password as OLAola27@_?
+
+After that, I give permission to the new user over the olaniyi_database database by running the command `GRANT ALL ON olaniyi_database.* TO 'olaniyi_user'@'%';` and the output below was generated
+
+![creating new user](./Images2/creating%20new%20user.jpg)
+
+To test if the access given to the new user is working, I exit the mysql console and then login to the olaniyi_user console by running  command `-u olaniyi_user -p` and the image below displays the output generated.
+
+![Testing new user password](./Images2/testing-new-user-password.jpg)
+
+To confirm that new user has access to the database, command `SHOW DATABASES;` was run and the output generated was shown in the image below:
+
+![confirming new user database access](./Images2/confirming-new-user-database-access.jpg)
+
+After testing olaniyi_user access to the database, I created a test tabled called todo_list by running command:
+
+
+`CREATE TABLE olaniyi_database.todo_list (`
+`mysql>     item_id INT AUTO_INCREMENT,`
+`mysql>     content VARCHAR(255),`
+`mysql>     PRIMARY KEY(item_id)`
+`mysql> );`
+
+I then added "My first important item in to the test table" by running command `INSERT INTO olaniyi_database.todo_list (content) VALUES ("My first important item");`
+
+I added other items by following the same command but with different values.
+
+To confirm if the items I created has been added as expected, I run command `SELECT * FROM olaniyi_database.todo_list;` and the output below was generated.
+
+
+After this has been confirmed, I exit the mysql console. So, I  create a PHP script that needs to connect Mysql and query for my content. I therefore, created a new PHP file in my custom web root directory with vi editor by running the command `sudo nano /var/www/lempstackproject/todo_list.php`
 
