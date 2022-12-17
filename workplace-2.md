@@ -173,3 +173,29 @@ To confirm if the items I created has been added as expected, I run command `SEL
 
 After this has been confirmed, I exit the mysql console. So, I  create a PHP script that needs to connect Mysql and query for my content. I therefore, created a new PHP file in my custom web root directory with vi editor by running the command `sudo nano /var/www/lempstackproject/todo_list.php`
 
+To connect the query for the content of the todo_list table that I created to the mysql database the script below was run in order to display the results in a list.
+
+
+
+`<?php`
+`$user = "olaniyi_user";`
+`$password = "OLAola27@_?"`
+`$database = "olaniyi_database";`
+`$table = "todo_list";`
+
+`try {`
+  `$db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);`
+  `echo "<h2>TODO</h2><ol>";`
+  `foreach($db->query("SELECT content FROM $table") as $row) {`
+    `echo "<li>" . $row['content'] . "</li>";`
+   `}`
+   `echo "</ol>";`
+`} catch (PDOException $e) {`
+    `print "Error!: " . $e->getMessage() . "<br/>";`
+    `die();`
+
+`}`
+
+I then accessed the page through my browser by http://my_IP/todo_list.php and the output below was generated on the browser
+
+![Testing my php full configuration](./Images2/testing-php-configuration.jpg)
